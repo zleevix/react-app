@@ -1,7 +1,9 @@
 import "./MyHeader.css";
-function MyHeader(props) {
+const MyHeader = (props) => {
+    const header = props.header;
+    
     return (<div className="header-react-app">
-        <h1>{props.header}</h1>
+        <h1>{header}</h1>
     </div>)
 }
 export default MyHeader;
