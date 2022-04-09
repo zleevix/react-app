@@ -1,3 +1,4 @@
+import React, {useState} from "react";
 import Expenses from "./components/Expenses/Expenses";
 import MyHeader from "./components/Expenses/MyHeader";
 import NewExpense from "./components/NewExpense/NewExpense";
@@ -23,16 +24,17 @@ const App = () => {
       date: new Date(2022, 3, 12),
     },
   ];
+  const [expensesData, setExpenseData] = useState(expenses);
   const addExpenseHandler = (newExpenseData) => {
     // console.log('in App.js');
     expenses.push(newExpenseData);
-    console.log(expenses);
+    setExpenseData(expenses);
   }
   return (
     <div>
       <MyHeader header="Tutorial ReactJS+Redux" />
       <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses items={expenses} />
+      <Expenses items={expensesData} />
     </div>
   );
 }
