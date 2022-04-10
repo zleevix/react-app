@@ -1,47 +1,51 @@
 import "./Expenses.css";
-import ExpenseItem from "./ExpenseItem";
+import ExpensesList from "./ExpensesList";
 import ExpensesFilter from "./ExpensesFilter";
 import Card from "../UI/Card";
 import { useState } from "react";
 const Expenses = (props) => {
   // const [items, setItems] = useState(props.items);
-  const [filteredYear, setFilteredYear] = useState("2019");
-
-  const filterChangeHandler = (selectedYear) => {
-    console.log("in Expenses.js: " + selectedYear);
+  const [filteredYear, setFilteredYear] = useState("----");
+  const [filterdTitle, setFilteredTitle] = useState("");
+  const filterYearChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
-    // let expenseItemsFiltered = [...items].filter(
-    //   (i) => i.date.getFullYear() == selectedYear
-    // );
-    // console.log("expenseItemsFiltered" +expenseItemsFiltered);
-    // if (expenseItemsFiltered.length == 0) {
-    //   setItems(items);
-    // }
-    // else {
-    //   setFilteredYear(selectedYear);
-    //   setItems(expenseItemsFiltered);
-    // }
   };
-  // console.log("Expenses.js");
-
-  const fileteredExpenses = props.items.filter(
-    (expense) => expense.date.getFullYear().toString()  === filteredYear
-  );
+  const filterTitleChangeHandler = (titleFilterd) => {
+    setFilteredTitle(titleFilterd);
+  };
+  let filteredExpenses = props.items;
+  if (filteredYear !== "----") {
+    filteredExpenses = props.items.filter(
+      (expense) => expense.date.getFullYear().toString() === filteredYear
+    );
+  }
+  if (filterdTitle !== "") {
+    filteredExpenses = props.items.filter((expense) =>
+      expense.title.includes(filterdTitle)
+    );
+  }
   return (
     <div>
       <Card className="expenses">
         <ExpensesFilter
           selected={filteredYear}
-          onExpenseFilter={filterChangeHandler}
+          onExpenseFilterByYear={filterYearChangeHandler}
+          onExpenseFilterByTitle={filterTitleChangeHandler}
+          inputted={filterdTitle}
         />
-        {fileteredExpenses.map((expense) => (
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ))}
+        <ExpensesList items={filteredExpenses}/>
+        {/* {filteredExpenses.length === 0 ? (
+          <p className={"no-expenses-filtered"}>No expenses found for {filteredYear}</p>
+        ) : (
+          filteredExpenses.map((expense) => (
+            <ExpenseItem
+              key={expense.id}
+              title={expense.title}
+              amount={expense.amount}
+              date={expense.date}
+            />
+          ))
+        )} */}
         {/* <ExpenseItem
           title={props.items[0].title}
           amount={props.items[0].amount}

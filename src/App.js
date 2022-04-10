@@ -22,6 +22,25 @@ const INITIAL_EXPENSES_DATA =[
     amount: 450,
     date: new Date(2022, 3, 12),
   },
+  {
+    id: "e5",
+    title: "iPhone 13 Pro Max",
+    amount: 194.12,
+    date: new Date(2022, 4, 1),
+  },
+  { id: "e6", title: "Mac Studio", amount: 799.49, date: new Date(2022, 1, 2) },
+  {
+    id: "e7",
+    title: "iPad Pro M1 2022",
+    amount: 294.67,
+    date: new Date(2022, 2, 28),
+  },
+  {
+    id: "e8",
+    title: "Macbook Pro 16inch M1 Max",
+    amount: 450,
+    date: new Date(2022, 3, 1),
+  },
 ];
 const App = () => {
  
