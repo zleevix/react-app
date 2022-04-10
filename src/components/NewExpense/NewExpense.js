@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import ExpenseForm from './ExpenseForm';
-import AddNewExpenseButton from './AddNewExpenseButton';
+// import AddNewExpenseButton from './AddNewExpenseButton';
 import './NewExpense.css';
 const NewExpense = (props) => {
-    const [displayButtonAdd, setDisplayButtonAdd] = useState(true);
+    const [isDisplayExpenseForm, setIsDisplayExpenseForm] = useState(false);
     const saveExpenseDateHandler = (enteredExpense) => {
         const expenseData = {
             ...enteredExpense,
@@ -11,15 +11,26 @@ const NewExpense = (props) => {
         };
         console.log(expenseData);
         props.onAddExpense(expenseData);
-        setDisplayButtonAdd(true);
+        // setDisplayButtonAdd(true);
+        hideExpenseForm();
     }
-    const clickHandler = (changed) => {
-        setDisplayButtonAdd(changed);
+    // const clickHandler = (changed) => {
+    //     setDisplayExpenseForm(changed);
+    // }
+
+    const displayExpenseForm = () => {
+        setIsDisplayExpenseForm(true);
     }
+
+    const hideExpenseForm = () => {
+        setIsDisplayExpenseForm(false);
+    }
+
     return (
         <div className="new-expense">
-            { displayButtonAdd && <AddNewExpenseButton onClickHandler={clickHandler} />}
-            { !displayButtonAdd && <ExpenseForm onSaveExpenseData={saveExpenseDateHandler} onCancelHandler={clickHandler}/>}
+            {/* { displayButtonAdd && <AddNewExpenseButton onClickHandler={clickHandler} />} */}
+            { !isDisplayExpenseForm && <button onClick={displayExpenseForm}>Add New Expense</button>}
+            { isDisplayExpenseForm && <ExpenseForm onSaveExpenseData={saveExpenseDateHandler} onCancelHandler={hideExpenseForm}/>}
             
         </div>
     );
