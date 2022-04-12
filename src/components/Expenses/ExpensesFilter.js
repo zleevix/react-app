@@ -24,7 +24,7 @@ const ExpensesFilter = (props) => {
           <option value="2018">2018</option>
         </select>
       </div>
-      <div className="expenses-filter__control">
+      <div style={{display: "none"}} className="expenses-filter__control">
         <label>Filter by title</label>
         <input
           type="text"

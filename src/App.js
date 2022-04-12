@@ -13,13 +13,13 @@ const INITIAL_EXPENSES_DATA =[
   {
     id: "e3",
     title: "Car Insurance",
-    amount: 294.67,
+    amount: 194.67,
     date: new Date(2021, 2, 28),
   },
   {
     id: "e4",
     title: "New Desk (Wooden)",
-    amount: 450,
+    amount: 112.99,
     date: new Date(2022, 3, 12),
   },
   {
@@ -28,17 +28,17 @@ const INITIAL_EXPENSES_DATA =[
     amount: 194.12,
     date: new Date(2022, 4, 1),
   },
-  { id: "e6", title: "Mac Studio", amount: 799.49, date: new Date(2022, 1, 2) },
+  { id: "e6", title: "Mac Studio", amount: 99.49, date: new Date(2022, 1, 2) },
   {
     id: "e7",
     title: "iPad Pro M1 2022",
-    amount: 294.67,
+    amount: 194.67,
     date: new Date(2022, 2, 28),
   },
   {
     id: "e8",
     title: "Macbook Pro 16inch M1 Max",
-    amount: 450,
+    amount: 134.88,
     date: new Date(2022, 3, 1),
   },
 ];
